@@ -1,0 +1,756 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ContactFormModel {
+  id: String!
+  name: String!
+  title: String!
+  description: String!
+  email: String!
+  status: Boolean!
+  contact_form_status: DataStatus
+}
+
+type UsersEvents {
+  id: String!
+  users: User!
+  events: Events!
+  is_active: Boolean!
+  user_events_status: DataStatus
+}
+
+type EventTypes {
+  id: String!
+  name: String!
+  value_info: String!
+  description: String!
+  status: Boolean!
+  event_sub_types: [EventSubTypes!]
+  event_types_status: DataStatus
+}
+
+type EventSubTypes {
+  id: String!
+  name: String!
+  image: String!
+  value_info: String!
+  description: String!
+  title: String!
+  meta_title: String!
+  meta_description: String!
+  status: Boolean!
+  event_types: EventTypes!
+  events_sub_types_events: [Events!]
+  event_sub_types_status: DataStatus
+}
+
+type EventsRatingModel {
+  id: String!
+  rating_comment: String!
+  rating_number: Int!
+  status: Boolean!
+  rated_events: Events
+  rated_user: User
+  event_rating_status: DataStatus
+}
+
+type EventsFeedbackModel {
+  id: String!
+  title: String!
+  description: String!
+  status: Boolean!
+  feedback_events: Events
+  feedback_user: User
+  event_feedback_status: DataStatus
+}
+
+type EventPrice {
+  id: String!
+  event_price: String!
+  discount: String!
+  currency_code: String!
+  status: Boolean!
+  events: Events
+  event_price_status: DataStatus
+}
+
+type EventService {
+  id: String!
+  title: String!
+  description: String!
+  service_description: String!
+  cost: String!
+  city: String!
+  currency_code: String!
+  status: Boolean!
+  events: Events
+  event_service_status: DataStatus
+}
+
+type EventImage {
+  id: String!
+  image: String!
+  status: Boolean!
+  events: Events!
+  event_image_status: DataStatus
+}
+
+type Events {
+  id: String!
+  image: String!
+  description: String!
+  title: String!
+  city: String!
+  status: Boolean!
+  country: String!
+  state: String!
+  contact: String!
+  address: String!
+  event_date: String!
+  event_time: String!
+  users: User!
+  user_events: [User!]!
+  event_sub_types: EventSubTypes
+  events_rating_event: [EventsRatingModel!]
+  events_feedback_event: [EventsFeedbackModel!]
+  event_prices: [EventPrice!]
+  event_cities: [EventCity!]
+  event_services: [EventService!]
+  event_images: [EventImage!]
+  event_status: DataStatus
+}
+
+type EventCity {
+  id: String!
+  event_time: String!
+  event_date: String!
+  city: String!
+  country: String!
+  state: String!
+  address: String!
+  cost: String!
+  terms_condition: String!
+  description: String!
+  contact: String!
+  longitude: String!
+  latitude: String!
+  pincode: String!
+  currency_code: String!
+  status: Boolean!
+  events: Events!
+  event_city_status: DataStatus
+}
+
+type PostLike {
+  id: String!
+  description: String!
+  likes: Boolean!
+  status: Boolean!
+  posts: CelestialPost!
+  users: User!
+  post_likes_status: DataStatus
+}
+
+type SubscriptionFormModel {
+  id: String!
+  email: String!
+  status: Boolean!
+  is_sent_email: Boolean!
+  subscription_form_status: DataStatus
+}
+
+type UserRoles {
+  id: String!
+  name: String!
+  value_info: String!
+  description: String!
+  status: Boolean!
+  users: [User!]
+  user_roles_status: DataStatus
+}
+
+type DataStatus {
+  id: String!
+  status_number: Int!
+  value_info: String!
+  title: String!
+  description: String!
+  status: Boolean!
+  users: [User!]!
+  posts: [CelestialPost!]!
+  user_roles: [UserRoles!]!
+  post_likes: [PostLike!]!
+  post_comments: [PostComment!]!
+  events: [Events!]!
+  event_types: [EventTypes!]!
+  event_sub_types: [EventSubTypes!]!
+  event_ratings: [EventsRatingModel!]!
+  event_feedbacks: [EventsFeedbackModel!]!
+  contact_forms: [ContactFormModel!]!
+  subscription_forms: [SubscriptionFormModel!]!
+  event_cities: [EventCity!]!
+  event_prices: [EventPrice!]!
+  event_services: [EventService!]!
+  event_images: [EventImage!]!
+}
+
+type PostComment {
+  id: String!
+  description: String!
+  comment: String!
+  status: Boolean!
+  posts: CelestialPost!
+  users: User!
+  post_comment_status: DataStatus
+}
+
+type CelestialPost {
+  id: String!
+  image: String!
+  title: String!
+  description: String!
+  metatitle: String!
+  metadescription: String!
+  status: Boolean!
+  users: User!
+  likes: [PostLike!]
+  comments: [PostComment!]
+  post_users_likes: [User!]
+  posts_users_comments: [User!]
+  posts_status: DataStatus
+}
+
+type User {
+  id: String!
+  email: String!
+  username: String!
+  firstname: String!
+  lastname: String!
+  address1: String!
+  address2: String!
+  city: String!
+  state: String!
+  country: String!
+  password: String!
+  status: Boolean!
+  usersRole: UserRoles
+  celestialPosts: [CelestialPost!]
+  event_created: [Events!]
+  events_enroll: [Events!]
+  user_likes: [PostLike!]
+  users_posts_likes: [CelestialPost!]
+  user_comments: [PostComment!]
+  users_posts_comments: [CelestialPost!]
+  events_rating_user: [EventsRatingModel!]
+  events_feedback_user: [EventsFeedbackModel!]
+  user_statuses: DataStatus
+}
+
+type UserCount {
+  count: Int!
+}
+
+type UserResetPassword {
+  message: String!
+  change: Boolean!
+}
+
+type Auth {
+  token: String!
+  user: User!
+}
+
+type CelestialPostCount {
+  count: Int!
+}
+
+type PostLikeCount {
+  count: Int!
+}
+
+type PostCommentCount {
+  count: Int!
+}
+
+type UserRoleCount {
+  count: Int!
+}
+
+type EventTypesCount {
+  count: Int!
+}
+
+type EventSubTypesCount {
+  count: Int!
+}
+
+type AverageEventsRatingModel {
+  avg_rating: String!
+  five_star: String!
+  four_star: String!
+  three_star: String!
+  two_star: String!
+  one_star: String!
+}
+
+type Query {
+  getUsers: [User!]!
+  getUser(id: String!): User!
+  userCount: UserCount!
+  profileDetails: User!
+  isAuthorizedUser: Boolean!
+  getPosts: [CelestialPost!]!
+  getPost(id: String!): CelestialPost!
+  postCount: CelestialPostCount!
+  getUserPosts: [CelestialPost!]!
+  getLikes: [PostLike!]!
+  getLike(id: String!): PostLike!
+  getUserLikes: [PostLike!]!
+  getPostLikes(postId: String!): [PostLike!]!
+  getUserLikesCount: PostLikeCount!
+  getPostLikesCount(postId: String!): PostLikeCount!
+  getComment(id: String!): PostComment!
+  getComments: [PostComment!]!
+  getUserComments: [PostComment!]!
+  getPostComments(postId: String!): [PostComment!]!
+  getUserCommentsCount: PostCommentCount!
+  getPostCommentsCount(postId: String!): PostCommentCount!
+  getEvents: [Events!]!
+  getEvent(id: String!): Events!
+  getPlannerCreatedEvents: [Events!]!
+  getUserRole(id: String!): UserRoles!
+  getUserRoles: [UserRoles!]!
+  countUserRoles: UserRoleCount!
+  getEventType(id: String!): EventTypes!
+  getEventTypes: [EventTypes!]!
+  countEventTypes: EventTypesCount!
+  getEventSubType(id: String!): EventSubTypes!
+  getEventSubTypes: [EventSubTypes!]!
+  countEventSubTypes: EventSubTypesCount!
+  countEventSubTypesByEventTypes(event_types_id: String!): EventSubTypesCount!
+  getEventsRating(id: String!): EventsRatingModel!
+  getEventsRatings: [EventsRatingModel!]!
+  getEventsRatingsByUser: [EventsRatingModel!]!
+  getEventsRatingsByEvent(event_id: String!): [EventsRatingModel!]!
+  getAllStarRatingsOfSpecificEvent(event_id: String!): AverageEventsRatingModel!
+  getEventsFeedback(id: String!): EventsFeedbackModel!
+  getEventsFeedbacks: [EventsFeedbackModel!]!
+  getContactForms: [ContactFormModel!]!
+  getContactForm(id: String!): ContactFormModel!
+  getSubscriptions: [SubscriptionFormModel!]!
+  getSubscription(id: String!): SubscriptionFormModel!
+  getEventPrices: [EventPrice!]!
+  getEventPrice(id: String!): EventPrice!
+  getEventCities: [EventCity!]!
+  getEventCity(id: String!): EventCity!
+  getEventServices: [EventService!]!
+  getEventService(id: String!): EventService!
+  getEventImages: [EventImage!]!
+  getEventImage(id: String!): EventImage!
+  getDataStatuses: [DataStatus!]!
+  getDataStatus(id: String!): DataStatus!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(id: String!, createUserInput: CreateUserInput!): User!
+  deleteUser(id: String!): User!
+  signIn(email: String!, password: String!, role: String!): Auth!
+  resetPassword(email: String!, password: String!): UserResetPassword!
+  updateProfile(updateUserInput: UpdateUserInput!): User!
+  createPost(createCelestialPostInput: CreateCelestialPostInput!): CelestialPost!
+  updatePost(id: String!, updateCelestialPostInput: UpdateCelestialPostInput!): CelestialPost!
+  deletePost(id: String!): CelestialPost!
+  createUserPost(createUserCelestialPostInput: CreateUserCelestialPostInput!): CelestialPost!
+  createLike(createPostLikeInput: CreatePostLikeInput!): PostLike!
+  updateLike(id: String!, updatePostLikeInput: UpdatePostLikeInput!): PostLike!
+  deleteLike(id: String!): PostLike!
+  createComment(createPostCommentInput: CreatePostCommentInput!): PostComment!
+  updateComment(id: String!, updatePostCommentInput: UpdatePostCommentInput!): PostComment!
+  deleteComment(id: String!): PostComment!
+  createEvent(createEventInput: CreateEventInput!): Events!
+  updateEvent(id: String!, updateEventInput: UpdateEventInput!): Events!
+  deleteEvent(id: String!): Events!
+  enrollEvents(createUsersEventInput: CreateUsersEventsInput!): UsersEvents!
+  createUserRoles(createUserRoleInput: CreateUserRoleInput!): UserRoles!
+  updateUserRoles(id: String!, updateUserRoleInput: UpdateUserRoleInput!): UserRoles!
+  deleteUserRoles(id: String!): UserRoles!
+  createEventTypes(createEventTypeInput: CreateEventTypeInput!): EventTypes!
+  updateEventTypes(id: String!, updateEventTypeInput: UpdateEventTypeInput!): EventTypes!
+  deleteEventTypes(id: String!): EventTypes!
+  createEventSubTypes(createEventSubTypeInput: CreateEventSubTypeInput!): EventSubTypes!
+  updateEventSubTypes(id: String!, updateEventSubTypeInput: UpdateEventSubTypeInput!): EventSubTypes!
+  deleteEventSubTypes(id: String!): EventSubTypes!
+  createEventsRating(createEventsRatingInput: CreateEventsRatingInput!): EventsRatingModel!
+  updateEventsRating(id: String!, updateEventsRatingInput: UpdateEventsRatingInput!): EventsRatingModel!
+  deleteEventsRating(id: String!): EventsRatingModel!
+  createEventsFeedback(createEventsFeedbackInput: CreateEventsFeedbackInput!): EventsFeedbackModel!
+  updateEventsFeedback(id: String!, updateEventsFeedbackInput: UpdateEventsFeedbackInput!): EventsFeedbackModel!
+  deleteEventsFeedback(id: String!): EventsFeedbackModel!
+  createContactFrom(createContactFromInput: CreateContactFromInput!): ContactFormModel!
+  updateContactFrom(id: String!, updateContactFromInput: UpdateContactFromInput!): ContactFormModel!
+  deleteContactForm(id: String!): ContactFormModel!
+  createSubscription(createSubscriptionFormInput: CreateSubscriptionFormInput!): SubscriptionFormModel!
+  updateSubscription(id: String!, updateSubscriptionFormInput: UpdateSubscriptionFormInput!): SubscriptionFormModel!
+  deleteSubscription(id: String!): SubscriptionFormModel!
+  createEventPrice(createEventPriceInput: CreateEventPriceInput!): EventPrice!
+  updateEventPrice(id: String!, updateEventPriceInput: UpdateEventPriceInput!): EventPrice!
+  deleteEventPrice(id: String!): EventPrice!
+  createEventCity(createEventCityInput: CreateEventCityInput!): EventCity!
+  updateEventCity(id: String!, updateEventCityInput: UpdateEventCityInput!): EventCity!
+  deleteEventCity(id: String!): EventCity!
+  createEventService(createEventServiceInput: CreateEventServiceInput!): EventService!
+  updateEventService(id: String!, updateEventServiceInput: UpdateEventServiceInput!): EventService!
+  deleteEventService(id: String!): EventService!
+  createEventImage(createEventImageInput: CreateEventImageInput!): EventImage!
+  updateEventImage(id: String!, updateEventImageInput: UpdateEventImageInput!): EventImage!
+  deleteEventImage(id: String!): EventImage!
+  createDataStatus(createDataStatusInput: CreateDataStatusInput!): DataStatus!
+  updateDataStatus(id: String!, updateDataStatusInput: UpdateDataStatusInput!): DataStatus!
+  deleteDataStatus(id: String!): DataStatus!
+}
+
+input CreateUserInput {
+  email: String!
+  username: String!
+  firstname: String!
+  lastname: String!
+  address1: String!
+  address2: String!
+  city: String!
+  state: String!
+  country: String!
+  password: String!
+  status: Boolean!
+  userRoleId: String!
+  status_number: Int!
+}
+
+input UpdateUserInput {
+  email: String!
+  username: String!
+  firstname: String!
+  lastname: String!
+  address1: String!
+  address2: String!
+  city: String!
+  state: String!
+  country: String!
+  status: Boolean!
+}
+
+input CreateCelestialPostInput {
+  image: String!
+  title: String!
+  description: String!
+  metatitle: String!
+  metadescription: String!
+  status: Boolean!
+  userId: String!
+  status_number: Int!
+}
+
+input UpdateCelestialPostInput {
+  image: String!
+  title: String!
+  description: String!
+  metatitle: String!
+  metadescription: String!
+  status: Boolean!
+}
+
+input CreateUserCelestialPostInput {
+  image: String!
+  title: String!
+  description: String!
+  metatitle: String!
+  metadescription: String!
+  status: Boolean!
+}
+
+input CreatePostLikeInput {
+  description: String!
+  likes: Boolean!
+  status: Boolean!
+  postId: String!
+  userId: String!
+  status_number: Int!
+}
+
+input UpdatePostLikeInput {
+  description: String!
+  likes: Boolean!
+  status: Boolean!
+}
+
+input CreatePostCommentInput {
+  description: String!
+  comment: String!
+  status: Boolean!
+  postId: String!
+  userId: String!
+  status_number: Int!
+}
+
+input UpdatePostCommentInput {
+  description: String!
+  comment: String!
+  status: Boolean!
+}
+
+input CreateEventInput {
+  image: String!
+  description: String!
+  title: String!
+  city: String!
+  status: Boolean!
+  country: String!
+  state: String!
+  contact: String!
+  address: String!
+  event_date: String!
+  event_time: String!
+  userId: String!
+  event_sub_type_name: String!
+  status_number: Int!
+}
+
+input UpdateEventInput {
+  image: String!
+  description: String!
+  title: String!
+  city: String!
+  address: String!
+  status: Boolean!
+  country: String!
+  state: String!
+  contact: String!
+  event_date: String!
+  event_time: String!
+}
+
+input CreateUsersEventsInput {
+  userId: String!
+  eventId: String!
+  is_active: Boolean!
+  status_number: Int!
+}
+
+input CreateUserRoleInput {
+  name: String!
+  value_info: String!
+  description: String!
+  status: Boolean!
+  status_number: Int!
+}
+
+input UpdateUserRoleInput {
+  name: String!
+  value_info: String!
+  description: String!
+  status: Boolean!
+}
+
+input CreateEventTypeInput {
+  name: String!
+  description: String!
+  value_info: String!
+  status: Boolean!
+  status_number: Int!
+}
+
+input UpdateEventTypeInput {
+  name: String!
+  description: String!
+  value_info: String!
+  status: Boolean!
+}
+
+input CreateEventSubTypeInput {
+  name: String!
+  value_info: String!
+  description: String!
+  title: String!
+  image: String!
+  meta_title: String!
+  meta_description: String!
+  status: Boolean!
+  event_type_value: String!
+  status_number: Int!
+}
+
+input UpdateEventSubTypeInput {
+  name: String!
+  value_info: String!
+  description: String!
+  title: String!
+  image: String!
+  meta_title: String!
+  meta_description: String!
+  status: Boolean!
+}
+
+input CreateEventsRatingInput {
+  rating_comment: String!
+  rating_number: Int!
+  status: Boolean!
+  user_id: String!
+  event_id: String!
+  status_number: Int!
+}
+
+input UpdateEventsRatingInput {
+  rating_comment: String!
+  rating_number: Int!
+  status: Boolean!
+}
+
+input CreateEventsFeedbackInput {
+  title: String!
+  description: String!
+  status: Boolean!
+  user_id: String!
+  event_id: String!
+  status_number: Int!
+}
+
+input UpdateEventsFeedbackInput {
+  title: String!
+  description: String!
+  status: Boolean!
+}
+
+input CreateContactFromInput {
+  name: String!
+  title: String!
+  description: String!
+  email: String!
+  status: Boolean!
+  status_number: Int!
+}
+
+input UpdateContactFromInput {
+  name: String!
+  title: String!
+  description: String!
+  email: String!
+  status: Boolean!
+}
+
+input CreateSubscriptionFormInput {
+  email: String!
+  status: Boolean!
+  is_email_sent: Boolean!
+  status_number: Int!
+}
+
+input UpdateSubscriptionFormInput {
+  email: String!
+  status: Boolean!
+  is_email_sent: Boolean!
+}
+
+input CreateEventPriceInput {
+  event_price: String!
+  discount: String!
+  currency_code: String!
+  status: Boolean!
+  events_id: String!
+  status_number: Int!
+}
+
+input UpdateEventPriceInput {
+  event_price: String!
+  discount: String!
+  currency_code: String!
+  status: Boolean!
+}
+
+input CreateEventCityInput {
+  event_time: String!
+  event_date: String!
+  city: String!
+  country: String!
+  state: String!
+  address: String!
+  cost: String!
+  terms_condition: String!
+  description: String!
+  contact: String!
+  longitude: String!
+  latitude: String!
+  pincode: String!
+  currency_code: String!
+  status: Boolean!
+  events_id: String!
+  status_number: Int!
+}
+
+input UpdateEventCityInput {
+  event_time: String!
+  event_date: String!
+  city: String!
+  country: String!
+  state: String!
+  address: String!
+  cost: String!
+  terms_condition: String!
+  description: String!
+  contact: String!
+  longitude: String!
+  latitude: String!
+  status: Boolean!
+  pincode: String!
+  currency_code: String!
+}
+
+input CreateEventServiceInput {
+  title: String!
+  description: String!
+  service_description: String!
+  cost: String!
+  city: String!
+  currency_code: String!
+  status: Boolean!
+  events_id: String!
+  status_number: Int!
+}
+
+input UpdateEventServiceInput {
+  title: String!
+  description: String!
+  service_description: String!
+  cost: String!
+  city: String!
+  currency_code: String!
+  status: Boolean!
+}
+
+input CreateEventImageInput {
+  image: String!
+  status: Boolean!
+  events_id: String!
+  status_number: Int!
+}
+
+input UpdateEventImageInput {
+  image: String!
+  status: Boolean!
+}
+
+input CreateDataStatusInput {
+  status_number: Int!
+  value_info: String!
+  title: String!
+  description: String!
+  status: Boolean!
+}
+
+input UpdateDataStatusInput {
+  status_number: Int!
+  value_info: String!
+  title: String!
+  description: String!
+  status: Boolean!
+}
