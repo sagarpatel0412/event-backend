@@ -21,6 +21,13 @@ export class AppController {
   }
 
   @AllowUnauthorized()
+  @Get('/docs')
+  readFile(@Res() res: Response) {
+    // return 'hello world';
+    return res.sendFile(join(__dirname, '../../', 'src/information.html'));
+  }
+
+  @AllowUnauthorized()
   @Get('/countries')
   async getCountry(@Res() res: Response): Promise<any> {
     const results = await this.http.get('https://restcountries.com/v3.1/all');

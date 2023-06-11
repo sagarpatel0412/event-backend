@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      .header_container {
+        padding: 5px;
+        background-color: black;
+        color: white;
+      }
+      .header_container .header {
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .main_section {
+        min-height: 100vh;
+        padding: 15px;
+      }
+      .footer_section {
+        padding: 15px;
+        background-color: black;
+        color: white;
+        font-size: larger;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header_container">
+      <header class="header">
+        <div>
+          <h1>
+            <a href="/" style="text-decoration: none; color: white"
+              >Event Planner</a
+            >
+          </h1>
+        </div>
+        <div>
+          <h1>Welcome to docs</h1>
+        </div>
+      </header>
+    </div>
+    <div class="main_section">
+      <main>
+        <div>
+          <h2>Documentation for rest api for countries</h2>
+          <hr />
+          <div style="margin-top: 10px">
+            <h4>/GET</h4>
+            <br />
+            <p>To see list of countries <a href="/countries">/countries</a></p>
+          </div>
+          <hr />
+          <div style="margin-top: 10px">
+            <h4>/GET</h4>
+            <br />
+            <p>
+              To see the list of states within specific countries
+              <a href="/countries/state?country=india"
+                >/countries/state?country=india</a
+              >
+            </p>
+          </div>
+          <hr />
+          <div style="margin-top: 10px">
+            <h4>/GET</h4>
+            <br />
+            <p>
+              To see the list of states within specific countries
+              <a href="/countries/city?country=india&state=gujarat"
+                >/countries/city?country=india&state=gujarat</a
+              >
+            </p>
+          </div>
+          <hr />
+        </div>
+      </main>
+    </div>
+    <div class="footer_section">
+      <footer>
+        &copy; Nebula corporation
+        <p id="date"></p>
+      </footer>
+    </div>
+    <script>
+      var date = new Date().getFullYear();
+      document.getElementById('date').outerText = date;
+    </script>
+  </body>
+</html>
