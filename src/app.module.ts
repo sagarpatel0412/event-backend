@@ -26,6 +26,8 @@ import { EventCityModule } from './event-city/event-city.module';
 import { EventServiceModule } from './event-service/event-service.module';
 import { EventImageModule } from './event-image/event-image.module';
 import { DataStatusModule } from './data-status/data-status.module';
+import { BlogImageModule } from './blog-image/blog-image.module';
+import { HttpModule } from '@nestjs/axios';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -81,6 +83,7 @@ import { DataStatusModule } from './data-status/data-status.module';
       },
     }),
     ScheduleModule.forRoot(),
+    HttpModule,
     UserModule,
     CelestialPostModule,
     AuthModule,
@@ -99,6 +102,7 @@ import { DataStatusModule } from './data-status/data-status.module';
     EventServiceModule,
     EventImageModule,
     DataStatusModule,
+    BlogImageModule,
   ],
   controllers: [AppController],
   providers: [AppService],

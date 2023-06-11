@@ -205,6 +205,14 @@ type PostComment {
   post_comment_status: DataStatus
 }
 
+type BlogImage {
+  id: String!
+  image: String!
+  status: Boolean!
+  blog_image_status: DataStatus
+  posts: CelestialPost
+}
+
 type CelestialPost {
   id: String!
   image: String!
@@ -219,6 +227,7 @@ type CelestialPost {
   post_users_likes: [User!]
   posts_users_comments: [User!]
   posts_status: DataStatus
+  post_images: [BlogImage!]
 }
 
 type User {
@@ -350,6 +359,8 @@ type Query {
   getEventImage(id: String!): EventImage!
   getDataStatuses: [DataStatus!]!
   getDataStatus(id: String!): DataStatus!
+  getBlogImages: [BlogImage!]!
+  getBlogImage(id: String!): BlogImage!
 }
 
 type Mutation {
@@ -409,6 +420,9 @@ type Mutation {
   createDataStatus(createDataStatusInput: CreateDataStatusInput!): DataStatus!
   updateDataStatus(id: String!, updateDataStatusInput: UpdateDataStatusInput!): DataStatus!
   deleteDataStatus(id: String!): DataStatus!
+  createBlogImage(createBlogImageInput: CreateBlogImageInput!): BlogImage!
+  updateBlogImage(id: String!, updateBlogImageInput: UpdateBlogImageInput!): BlogImage!
+  deleteBlogImage(id: String!): BlogImage!
 }
 
 input CreateUserInput {
@@ -752,5 +766,17 @@ input UpdateDataStatusInput {
   value_info: String!
   title: String!
   description: String!
+  status: Boolean!
+}
+
+input CreateBlogImageInput {
+  image: String!
+  status: Boolean!
+  status_number: Int!
+  post_id: String!
+}
+
+input UpdateBlogImageInput {
+  image: String!
   status: Boolean!
 }

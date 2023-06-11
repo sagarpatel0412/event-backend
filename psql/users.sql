@@ -1,8 +1,9 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp"; -- to genrate uuid_generate_v4()
 create table users (id uuid default uuid_generate_v4(),email varchar unique not null,password varchar not null,username varchar unique not null,firstname varchar not null,lastname varchar not null,state varchar not null,city varchar not null,country varchar not null,address1 varchar not null,status boolean,address2 varchar not null,created_at date,updated_at date,PRIMARY KEY(id));
 
 create table celestial_posts(id uuid default uuid_generate_v4(),image varchar not null,title varchar not null,description varchar not null,metaTitle varchar not null,metaDescription varchar not null,status boolean,created_at date,updated_at date,user_id uuid,PRIMARY KEY(id),CONSTRAINT fk_users FOREIGN KEY(user_id) REFERENCES users(id));
-ALTER TABLE celestial_post RENAME TO celestial_posts;
-drop table celestial_posts;
+-- ALTER TABLE celestial_post RENAME TO celestial_posts;
+-- drop table celestial_posts;
 create table post_likes(id uuid default uuid_generate_v4(),email varchar not null,description varchar not null,likes boolean,status boolean,created_at date,updated_at date,post_id uuid,PRIMARY KEY(id),CONSTRAINT fk_celestial_posts FOREIGN KEY(post_id) REFERENCES celestial_posts(id));
 create table post_comments(id uuid default uuid_generate_v4(),email varchar not null,description varchar not null,comment varchar not null,status boolean,created_at date,updated_at date,post_id uuid,PRIMARY KEY(id),CONSTRAINT fk_celestial_posts_comments FOREIGN KEY(post_id) REFERENCES celestial_posts(id));
 create table events(id uuid default uuid_generate_v4(),address varchar not null,image varchar not null,description varchar not null,title varchar not null,city varchar not null,status boolean,country varchar not null,state varchar not null,contact varchar not null,event_date date,event_time time,created_at date,updated_at date,user_id uuid,PRIMARY KEY(id),CONSTRAINT fk_events FOREIGN KEY(user_id) REFERENCES users(id));
@@ -72,3 +73,4 @@ alter table event_services add column status_id uuid;
 alter table event_services add CONSTRAINT fk_app_status_event_services FOREIGN KEY(status_id) REFERENCES app_statuses(id);
 alter table event_images add column status_id uuid;
 alter table event_images add CONSTRAINT fk_app_status_event_images FOREIGN KEY(status_id) REFERENCES app_statuses(id);
+create table blog_images(id uuid default uuid_generate_v4(), image varchar not null, status boolean, status_id uuid, post_id uuid,created_at date, updated_at date, PRIMARY KEY(id),CONSTRAINT fk_app_status_blog_image FOREIGN KEY(status_id) REFERENCES app_statuses(id),CONSTRAINT fk_app_status_paticular_blog FOREIGN KEY(post_id) REFERENCES celestial_posts(id));

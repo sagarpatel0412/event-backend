@@ -16,6 +16,7 @@ import { PostCommentModel } from 'src/post-comment/model/post-comment.model';
 import { PostLikeModel } from 'src/post-like/model/post-like.model';
 import { UserModel } from '../../user/model/user.model';
 import { DataStatusModel } from 'src/data-status/model/data-status.model';
+import { BlogImageModel } from 'src/blog-image/model/blog-image.model';
 
 @Scopes({
   users: () => {
@@ -78,6 +79,17 @@ import { DataStatusModel } from 'src/data-status/model/data-status.model';
       include: {
         model: DataStatusModel,
         as: 'posts_status',
+        attributes: {
+          exclude: ['created_at', 'updated_at'],
+        },
+      },
+    };
+  },
+  post_images: () => {
+    return {
+      include: {
+        model: BlogImageModel,
+        as: 'post_images',
         attributes: {
           exclude: ['created_at', 'updated_at'],
         },
@@ -177,4 +189,8 @@ export class CelestialPostModel extends Model<CelestialPostModel> {
   @Field(() => DataStatusModel, { nullable: true })
   @BelongsTo(() => DataStatusModel)
   posts_status: DataStatusModel;
+
+  @Field(() => [BlogImageModel], { nullable: true })
+  @HasMany(() => BlogImageModel)
+  post_images: BlogImageModel[];
 }
